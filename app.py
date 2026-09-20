@@ -402,7 +402,7 @@ with st.sidebar:
 # 新增：说明文档链接提示（可以将下面的 xxx 替换为你的文档实际链接，如飞书/钉钉/Notion/OneDrive链接）
 st.info("📄 **详见说明文档**：[点击此处查看完整 SOP 使用指南与文档](https://jcn3bijgp23x.feishu.cn/wiki/KrwUwFGLyi9HSekuE8DcCYiynpg)")
 
-with st.expander("📖 点击查看【任务 1、2、3】具体处理规则说明", expanded=True):
+with st.expander("📖 点击查看【任务 1、2、3】具体处理规则说明", expanded=False):
     st.markdown("""
     * **[1] 任务 1：更新今日库存及 E 列公式填充**
       * 根据 `J3` 单元格的 ASIN 自动匹配并更新今天行的 **F列库存** 数据。
