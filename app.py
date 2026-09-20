@@ -13,7 +13,7 @@ import io
 warnings.filterwarnings('ignore', category=UserWarning)
 
 # 设置网页标题与布局
-st.set_page_config(page_title="水位表全自动处理系统", layout="wide")
+st.set_page_config(page_title="水位表自动化更新工具", layout="wide")
 
 # =========================================================
 # 工具函数
@@ -363,6 +363,15 @@ with st.sidebar:
 # ---------------------------------------------------------
 if access_code != "ltmx2026":
     st.warning("🔒 请在左侧边栏输入正确的访问密钥以解锁功能。")
+    
+    # 底部页脚（未解锁前也展示在最下方）
+    st.markdown("---")
+    st.markdown(
+        "<div style='text-align: center; color: #888888; font-size: 14px; padding: 10px;'>"
+        "Copyright © Jas | Contact: <a href='mailto:Joyce.qinyizhang@Gmail.com' style='color: #888888;'>Joyce.qinyizhang@Gmail.com</a>"
+        "</div>",
+        unsafe_allow_html=True
+    )
     st.stop()
 
 # ---------------------------------------------------------
@@ -388,9 +397,12 @@ with st.sidebar:
     selected_tasks = [task_options_map[label] for label in selected_task_labels]
 
 # ---------------------------------------------------------
-# 4. 密码正确后：在主界面显示任务规则说明
+# 4. 密码正确后：在主界面显示文档链接与任务规则说明
 # ---------------------------------------------------------
-with st.expander("📖 点击查看【任务 1、2、3】具体处理规则说明", expanded=False):
+# 新增：说明文档链接提示（可以将下面的 xxx 替换为你的文档实际链接，如飞书/钉钉/Notion/OneDrive链接）
+st.info("📄 **详见说明文档**：[点击此处查看完整 SOP 使用指南与文档](https://jcn3bijgp23x.feishu.cn/wiki/KrwUwFGLyi9HSekuE8DcCYiynpg)")
+
+with st.expander("📖 点击查看【任务 1、2、3】具体处理规则说明", expanded=True):
     st.markdown("""
     * **[1] 任务 1：更新今日库存及 E 列公式填充**
       * 根据 `J3` 单元格的 ASIN 自动匹配并更新今天行的 **F列库存** 数据。
@@ -473,3 +485,14 @@ if st.button("▶️ 开始在线处理", type="primary"):
                 )
             except Exception as e:
                 st.error(f"❌ 文件 【{file_name}】 处理失败，错误原因为: {str(e)}")
+
+# ---------------------------------------------------------
+# 6. 解锁后的页面最下方版权与联系信息 (Footer)
+# ---------------------------------------------------------
+st.markdown("---")
+st.markdown(
+    "<div style='text-align: center; color: #888888; font-size: 14px; padding: 10px;'>"
+    "Copyright © Jas | Contact: <a href='mailto:Joyce.qinyizhang@Gmail.com' style='color: #888888;'>Joyce.qinyizhang@Gmail.com</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
