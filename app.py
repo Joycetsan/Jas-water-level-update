@@ -348,7 +348,7 @@ def process_water_level_file(file_bytes, file_name, tasks, fba_lookup):
 # Streamlit UI 页面渲染
 # =========================================================
 
-st.title("🚀 水位表自动化在线处理平台")
+st.title("🚀 水位表自动化更新工具")
 st.markdown("请在左侧边栏输入密钥解锁系统功能。")
 
 # ---------------------------------------------------------
